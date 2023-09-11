@@ -7,7 +7,9 @@ class Timer {
             minutes: root.querySelector(".minutes"),
             seconds: root.querySelector(".seconds"),
             control: root.querySelector(".pause-resume-button"),
-            reset: root.querySelector(".reset-button")
+            reset: root.querySelector(".reset-button"),
+            dispay: root.querySelector(".time-display"),
+            input: root.querySelector(".time-input")
         };
 
         this.interval = null;
@@ -29,6 +31,10 @@ class Timer {
                 this.remainingSeconds = inputMinutes * 60;
                 this.updateInterfaceTime();
             }
+        });
+
+        this.el.display.addEventListener("click", () => {
+            input.focus();
         });
     }
 
@@ -77,6 +83,7 @@ class Timer {
 
     static getHTML() {
         return `
+        <input type="number" name="time-input" id="time-input" style="display: none;" class="time-input">
 		<button class="time-display">
 			<span class="hours">00</span>
 			<span>:</span>
@@ -86,6 +93,7 @@ class Timer {
 		</button>
 		<button class="pause-resume-button"><span class="material-symbols-rounded">pause</span></button>
 		<button class="reset-button"><span class="material-symbols-rounded">timer</span></button>`;
+    
     }
 }
 
