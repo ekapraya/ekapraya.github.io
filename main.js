@@ -11,12 +11,13 @@ class Timer {
             display: root.querySelector(".time-display"),
             input: root.querySelector(".time-input")
         };
-
+        this.ringtone = new Audio("./assets/alarm-clock.mp3")
         this.interval = null;
         this.initialSeconds = 0;
         this.remainingSeconds = 0;
 
         this.el.control.addEventListener("click", () => {
+            this.ringtone.pause()
             if (this.interval === null) {
                 this.start();
             } else {
@@ -25,13 +26,21 @@ class Timer {
         });
 
         this.el.reset.addEventListener("click", () => {
+            this.ringtone.pause();
             this.stop();
             this.remainingSeconds = this.initialSeconds;
             this.updateInterfaceTime();
         });
 
         this.el.display.addEventListener("click", () => {
+            this.ringtone.pause();
+            this.stop();
+            this.el.control.style.display = "none";
+            this.el.reset.style.display = "none";
             this.el.input.style.display = "block";
+            this.el.seconds.textContent = "00";
+            this.el.minutes.textContent = "00";
+            this.el.hours.textContent = "00";
             this.el.input.focus();
         });
 
@@ -46,15 +55,15 @@ class Timer {
             this.el.seconds.textContent = value.slice(4,6);
             this.el.minutes.textContent = value.slice(2, 4);
             this.el.hours.textContent = value.slice(0,2);
-            console.log(value)
         });
 
         this.el.input.addEventListener("change", () => {
             this.stop();
+            this.el.control.style.display = "block";
+            this.el.reset.style.display = "block";
             var value = this.el.input.value
             this.remainingSeconds = Number(value.slice(0, 2) * 3600) + Number(value.slice(2, 4) * 60) + Number(value.slice(4,6));
             this.initialSeconds = this.remainingSeconds;
-            console.log(this.remainingSeconds)
             this.updateInterfaceTime();
             this.el.input.value = ""
             this.el.input.style.display = "none";
@@ -91,7 +100,15 @@ class Timer {
             this.updateInterfaceTime();
     
             if (this.remainingSeconds === 0) {
-            this.stop();
+                if (typeof(Storage) !== "undefined") {
+                    localStorage.setItem("ts", Number(localStorage.getItem("ts")) + Number(this.initialSeconds))
+                }
+                console.log(JSON.stringify(localStorage).length)
+                display_time_spent()
+                this.ringtone.currentTime = 0;
+                this.ringtone.play();
+                this.ringtone.loop = true;
+                this.stop();
             }
         }, 1000);
     
@@ -108,7 +125,7 @@ class Timer {
 
     static getHTML() {
         return `
-        <input type="number" name="time-input" id="time-input" style="opacity: 0; position: absolute;" class="time-input">
+        <input type="number" name="time-input" id="time-input" style="opacity: 0; position: absolute; display: none" class="time-input">
 		<button class="time-display">
 			<span class="hours">00</span>
 			<span>:</span>
@@ -122,4 +139,21 @@ class Timer {
     }
 }
 
+
+function display_time_spent(){
+    var time_spent_diplay = document.querySelector(".time-spent-display");
+    if (typeof(Storage) !== "undefined") {
+        var time = localStorage.getItem("ts");
+        var hours = Math.floor(time/3600)
+        var minutes = Math.floor((time - hours*3600)/60)
+        var seconds = time%60
+        time_spent_diplay.textContent = String(hours) + "h " + String(minutes) + "m " + String(seconds) + "s"
+    } else {
+        time_spent_diplay.textContent = "no data"
+    }
+
+}
+
+
 new Timer(document.querySelector(".timer"));
+display_time_spent()
