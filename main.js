@@ -103,11 +103,13 @@ class Timer {
                 if (typeof(Storage) !== "undefined") {
                     localStorage.setItem("ts", Number(localStorage.getItem("ts")) + Number(this.initialSeconds))
                 }
-                console.log(JSON.stringify(localStorage).length)
                 display_time_spent()
                 this.ringtone.currentTime = 0;
                 this.ringtone.play();
                 this.ringtone.loop = true;
+                this.el.display.style.animationName = "blinking";
+                this.el.display.style.animationDuration = "1s";
+                this.el.display.style.animationIterationCount = "infinite";
                 this.stop();
             }
         }, 1000);
