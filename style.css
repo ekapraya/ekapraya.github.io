@@ -4,27 +4,36 @@
     min-height: 52px;
     gap: 0.5rem;
     justify-content: center;
+    
 }
 
 .timer button {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Comfortaa', cursive;
     padding: 0.75rem 1rem 0.75rem 1rem;
     border: 0rem;
     border-radius: 1rem;
+    font-size: 12px;
 }
 
 .pause-resume-button {
-    
+    background-color: #cef4cd;
+    color: #06be00;
 }
 
 .pause-resume-button.timer-start {
+    background-color: #cef4cd;
+    color: #06be00;
 }
 
 .pause-resume-button.timer-stop {
+    background-color: #cef4cd;
+    color: #06be00;
 }
 
 .reset-button {
-    
+    background-color: #cde8f4;
+    color: #0486bd;
+
 }
 
 .time-display {
@@ -32,6 +41,8 @@
     padding: 0.75rem 1rem 0.75rem 1rem;
     border: 0rem;
     border-radius: 1rem;
+    background-color: #f4cdcd;
+    color: #ae1616;
 }
 
 .time-spent {
@@ -39,22 +50,53 @@
     flex-direction: column;
     width: 100%;
     height: 100%;
-    background-color: #f0f0f0;
+    background-color: #f3cbf2;
+    color: #db00d0;
     border-radius: 1rem;
     align-items: center;
     justify-content: center;
+}
 
+.time-spent p {
+    margin: 0.5rem;
+}
+
+.time-spent-title {
+    display: flex;
+    background-color: #db00d0;
+    margin: 0.5rem;
+    padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+    border-radius: 2rem;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
 }
 
 .calendar {
     display: flex;
-    width: 100%;
-    height: 100%;
-    background-color: #f0f0f0;
+    flex-direction: column;
+    padding: 1rem 1rem 1rem 1rem;
+    width: calc(100% - 2rem);
+    height: calc(100% - 2rem);
+    background-color: #d9cdf4;
     border-radius: 1rem;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
+
+.calendar > div {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.calendar > div > button {
+    background-color: #7341e500;
+    color: #6231d5;
+    border: none;
+    border-radius: 1rem;
+  }
 
 .page {
     display: flex;
@@ -63,7 +105,7 @@
     flex-grow: 1;
     flex-direction: column;
     gap: 0.5rem;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Comfortaa', cursive;
 }
 
 .info-wrapper1 {
@@ -98,10 +140,26 @@
     flex-direction: column;
     width: 100%;
     height: 100%;
-    background-color: #f0f0f0;
+    background-color: #f7e7c2;
+    color: #e6a100;
     border-radius: 1rem;
     align-items: center;
     justify-content: center;
+}
+
+.streak p {
+    margin: 0.5rem;
+}
+
+.streak-title {
+    display: flex;
+    background-color: #e6a100;
+    margin: 0.5rem;
+    padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+    border-radius: 2rem;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
 }
 
 .notes {
@@ -109,10 +167,59 @@
     flex-direction: column;
     padding: 1rem 1rem 1rem 1rem;
     height: 100%;
-    background-color: #f0f0f0;
+    background-color: #c3f5f0;
     border-radius: 1rem;
     align-items: center;
     justify-content: center;
+}
+
+.note-header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 0.5rem 0;
+}
+
+.note-header button {
+    display: flex;
+    border-radius: 5rem;
+    border: 0.125rem;
+    border-style: solid;
+    border-color: #00b4b4;
+    padding: 0rem 1rem 0rem 1rem;
+    height: 100%;
+    align-items: center;
+    background-color: #c3f5f0;
+    font-family: 'Comfortaa', cursive;
+    color: #00b4b4;
+}
+
+.note-header button: {
+    display: flex;
+    border-radius: 5rem;
+    border: 0.125rem;
+    border-style: solid;
+    border-color: #00b4b4;
+    padding: 0rem 1rem 0rem 1rem;
+    height: 100%;
+    align-items: center;
+    background-color: #c3f5f0;
+    font-family: 'Comfortaa', cursive;
+    color: #00b4b4;
+}
+
+.note-header p {
+    display: flex;
+    border-radius: 5rem;
+    border: 0rem;
+    padding: 0rem 1rem 0rem 1rem;
+    height: 100%;
+    align-items: center;
+    background-color: #00b4b4;
+    font-family: 'Comfortaa', cursive;
+    color: #ffffff;
 }
 
 .note-input {
@@ -126,6 +233,8 @@
     border: none;
     overflow: auto;
     outline: none;
+    font-size: 12px;
+
 }
 
 
@@ -161,16 +270,23 @@ html {
 
 body {
     width: 100%;
+    font-size: 12px;
 }
 
 @media screen and (max-width: 600px) {
     .info-wrapper1 {
         flex-direction: column;
     }
+    .info-wrapper2 {
+        height: 50%;
+    }
+    .notes {
+        height: 50%;
+    }
 }
 
 @keyframes blinking {
-    0% {background-color: #f0f0f0;}
-    50% {background-color: pink;}
-    100% {background-color: #f0f0f0;}
+    0% {background-color: #f4cdcd;}
+    50% {background-color: rgb(255, 43, 78);}
+    100% {background-color: #f4cdcd;}
 }
