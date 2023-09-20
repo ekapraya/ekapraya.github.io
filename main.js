@@ -146,16 +146,79 @@ function display_time_spent(){
     var time_spent_diplay = document.querySelector(".time-spent-display");
     if (typeof(Storage) !== "undefined") {
         var time = localStorage.getItem("ts");
-        var hours = Math.floor(time/3600)
-        var minutes = Math.floor((time - hours*3600)/60)
-        var seconds = time%60
-        time_spent_diplay.textContent = String(hours) + "h " + String(minutes) + "m " + String(seconds) + "s"
+        var hours = Math.floor(time/3600);
+        var minutes = Math.floor((time - hours*3600)/60);
+        var seconds = time%60;
+        time_spent_diplay.textContent = String(hours) + "h " + String(minutes) + "m " + String(seconds) + "s";
     } else {
-        time_spent_diplay.textContent = "no data"
+        time_spent_diplay.textContent = "no data";
     }
 
 }
 
+const months = [[31, 0, "January", 0], [28, 3, "February", 31], [31, 3, "March", 59], [30, 6, "April", 90], [31,1, "May", 120], [30, 4, "June", 151], [31, 6, "July", 181], [31, 2, "August", 212], [30, 5, "September", 243], [31, 0, "October", 273], [30,3, "November", 304], [31,5, "December", 334]]
+const d = new Date();
+var currentMonth = d.getMonth();
 
+function calendar_update(m) {
+    for (var i = 0; i<42; i++) {
+        var day = document.querySelector(".m" + String(i+1))
+        day.textContent = 0
+        day.style.opacity = "0"
+    }
+    document.querySelector(".month").textContent = months[m][2];
+    var i = 1;
+    while (i <= months[m][0]) {
+        var day = document.querySelector(".m" + String(i + months[m][1]))
+        day.textContent = String(i)
+        day.style.opacity = "100"
+        day.innerHTML += '' //remove all event listener
+        day.addEventListener("click" , (e) => {
+            show_note(Number(e.target.className.substring(1)) - months[m][1])
+        })
+        i++;
+    }
+}
+function next_month() {
+    currentMonth++;
+    if (currentMonth>11){
+        currentMonth=11;
+        return;
+    }
+    calendar_update(currentMonth);
+}
+function prev_month() {
+    currentMonth--;
+    if (currentMonth<0){
+        currentMonth=0;
+        return;
+    }
+    calendar_update(currentMonth);
+}
+
+function show_tutorial() {
+
+}
+
+function close_tutorial() {
+    document.querySelector(".tutorial-wrapper").style.display = "none"
+}
+
+function show_note(n) {
+    var note_display_wrapper = document.querySelector(".note-display-wrapper");
+    var note_display_text = document.querySelector(".note-display-text");
+    note_display_wrapper.style.display = "flex";
+    note_display_text.textContent = "yout notes will be here";
+    console.log(n)
+}
+
+function close_note() {
+    document.querySelector(".note-display-wrapper").style.display = "none"
+
+}
+
+
+show_tutorial()
+calendar_update(currentMonth)
 new Timer(document.querySelector(".timer"));
 display_time_spent()

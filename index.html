@@ -11,6 +11,36 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
+	<div class="tutorial-wrapper">
+		<div class="tutorial">
+			<div class="tutorial-text">
+				
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis risus lacus, porttitor ac lorem ut, elementum hendrerit magna. Etiam eu eros accumsan enim tincidunt varius sit amet ut sem. Aenean eget accumsan velit, sit amet interdum tortor. Aliquam at nunc eget nunc consectetur lobortis vitae sit amet magna. Nam rhoncus, tellus sit amet porta faucibus, turpis lectus condimentum enim, nec auctor lectus velit sed nibh. Etiam rhoncus ex suscipit, iaculis orci sit amet, blandit lacus. Sed felis nisl, porta nec fermentum ac, pellentesque ac metus. Etiam ante lectus, dignissim nec tristique eget, fringilla ut lacus. Suspendisse vestibulum lorem ac sollicitudin dignissim. Donec interdum placerat ex vitae ultricies. Morbi quis dictum erat. In ante massa, sollicitudin eu metus eu, finibus commodo mi.
+
+			Integer eget tellus condimentum, ornare dolor semper, malesuada nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc semper, nisl quis tincidunt efficitur, risus massa accumsan massa, a iaculis justo magna vitae elit. Phasellus mollis felis eget tincidunt imperdiet. Praesent ultrices tortor at orci ornare, et semper mauris sodales. Nulla fringilla tristique risus et sollicitudin. Phasellus elementum dapibus blandit. Vivamus cursus cursus diam, sed vehicula ipsum mattis viverra. Nulla facilisi. Phasellus nec augue ornare, ultricies neque a, consequat purus. Aenean eu turpis vitae arcu mollis vulputate. Aliquam erat volutpat. Donec eget varius enim.
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis risus lacus, porttitor ac lorem ut, elementum hendrerit magna. Etiam eu eros accumsan enim tincidunt varius sit amet ut sem. Aenean eget accumsan velit, sit amet interdum tortor. Aliquam at nunc eget nunc consectetur lobortis vitae sit amet magna. Nam rhoncus, tellus sit amet porta faucibus, turpis lectus condimentum enim, nec auctor lectus velit sed nibh. Etiam rhoncus ex suscipit, iaculis orci sit amet, blandit lacus. Sed felis nisl, porta nec fermentum ac, pellentesque ac metus. Etiam ante lectus, dignissim nec tristique eget, fringilla ut lacus. Suspendisse vestibulum lorem ac sollicitudin dignissim. Donec interdum placerat ex vitae ultricies. Morbi quis dictum erat. In ante massa, sollicitudin eu metus eu, finibus commodo mi.
+			
+			Integer eget tellus condimentum, ornare dolor semper, malesuada nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc semper, nisl quis tincidunt efficitur, risus massa accumsan massa, a iaculis justo magna vitae elit. Phasellus mollis felis eget tincidunt imperdiet. Praesent ultrices tortor at orci ornare, et semper mauris sodales. Nulla fringilla tristique risus et sollicitudin. Phasellus elementum dapibus blandit. Vivamus cursus cursus diam, sed vehicula ipsum mattis viverra. Nulla facilisi. Phasellus nec augue ornare, ultricies neque a, consequat purus. Aenean eu turpis vitae arcu mollis vulputate. Aliquam erat volutpat. Donec eget varius enim.
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis risus lacus, porttitor ac lorem ut, elementum hendrerit magna. Etiam eu eros accumsan enim tincidunt varius sit amet ut sem. Aenean eget accumsan velit, sit amet interdum tortor. Aliquam at nunc eget nunc consectetur lobortis vitae sit amet magna. Nam rhoncus, tellus sit amet porta faucibus, turpis lectus condimentum enim, nec auctor lectus velit sed nibh. Etiam rhoncus ex suscipit, iaculis orci sit amet, blandit lacus. Sed felis nisl, porta nec fermentum ac, pellentesque ac metus. Etiam ante lectus, dignissim nec tristique eget, fringilla ut lacus. Suspendisse vestibulum lorem ac sollicitudin dignissim. Donec interdum placerat ex vitae ultricies. Morbi quis dictum erat. In ante massa, sollicitudin eu metus eu, finibus commodo mi.
+			
+			Integer eget tellus condimentum, ornare dolor semper, malesuada nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc semper, nisl quis tincidunt efficitur, risus massa accumsan massa, a iaculis justo magna vitae elit. Phasellus mollis felis eget tincidunt imperdiet. Praesent ultrices tortor at orci ornare, et semper mauris sodales. Nulla fringilla tristique risus et sollicitudin. Phasellus elementum dapibus blandit. Vivamus cursus cursus diam, sed vehicula ipsum mattis viverra. Nulla facilisi. Phasellus nec augue ornare, ultricies neque a, consequat purus. Aenean eu turpis vitae arcu mollis vulputate. Aliquam erat volutpat. Donec eget varius enim.
+					
+			</div>
+		</div>
+		<button class="tutorial-close" onclick="close_tutorial()">
+			<span class="material-symbols-rounded">close</span>
+		</button>
+	</div>
+	<div class="note-display-wrapper">
+		<div class="note-display">
+			<div class="note-display-text">
+				
+			</div>
+		</div>
+		<button class="note-display-close" onclick="close_note()">
+			<span class="material-symbols-rounded">close</span>
+		</button>
+	</div>
 	<div class="page">
 		<div class="timer">
 			<!--
@@ -47,67 +77,76 @@
 			</div>
 			<div class="calendar">
 				<div class="row1">
-					<button class="larrow"><</button>
-					<button class="month" style="background-color: blueviolet; color: white;">september</button>
-					<button class="rarrow">></button>
+					<button class="larrow" onclick="prev_month()"><</button>
+					<button class="month" style="background-color: blueviolet; color: white; font-size: 12px">september</button>
+					<button class="rarrow" onclick="next_month()">></button>
 				</div>
-				<div class="row2">
-					<button class="1">0</button>
-					<button class="2">0</button>
-					<button class="3">0</button>
-					<button class="4">0</button>
-					<button class="5">0</button>
-					<button class="6">0</button>
-					<button class="7">0</button>
+				<div class="row2" style="font-family: ;">
+					<button class="sunday">sun</button>
+					<button class="monday">mon</button>
+					<button class="tuesday">tue</button>
+					<button class="wednesday">wed</button>
+					<button class="thursday">thr</button>
+					<button class="friday">fri</button>
+					<button class="saturday">sat</button>
 				</div>
 				<div class="row3">
-					<button class="8">0</button>
-					<button class="9">0</button>
-					<button class="10">0</button>
-					<button class="11">0</button>
-					<button class="12">0</button>
-					<button class="13">0</button>
-					<button class="14">0</button>
+					<button class="m1">0</button>
+					<button class="m2">0</button>
+					<button class="m3">0</button>
+					<button class="m4">0</button>
+					<button class="m5">0</button>
+					<button class="m6">0</button>
+					<button class="m7">0</button>
 				</div>
 				<div class="row4">
-					<button class="15">0</button>
-					<button class="16">0</button>
-					<button class="17">0</button>
-					<button class="18">0</button>
-					<button class="19">0</button>
-					<button class="20">0</button>
-					<button class="21">0</button>
+					<button class="m8">0</button>
+					<button class="m9">0</button>
+					<button class="m10">0</button>
+					<button class="m11">0</button>
+					<button class="m12">0</button>
+					<button class="m13">0</button>
+					<button class="m14">0</button>
 				</div>
 				<div class="row5">
-					<button class="22">0</button>
-					<button class="23">0</button>
-					<button class="24">0</button>
-					<button class="25">0</button>
-					<button class="26">0</button>
-					<button class="27">0</button>
-					<button class="28">0</button>
+					<button class="m15">0</button>
+					<button class="m16">0</button>
+					<button class="m17">0</button>
+					<button class="m18">0</button>
+					<button class="m19">0</button>
+					<button class="m20">0</button>
+					<button class="m21">0</button>
 				</div>
 				<div class="row6">
-					<button class="29">0</button>
-					<button class="30">0</button>
-					<button class="31">0</button>
-					<button class="32">0</button>
-					<button class="33">0</button>
-					<button class="34">0</button>
-					<button class="35">0</button>
+					<button class="m22">0</button>
+					<button class="m23">0</button>
+					<button class="m24">0</button>
+					<button class="m25">0</button>
+					<button class="m26">0</button>
+					<button class="m27">0</button>
+					<button class="m28">0</button>
 				</div>
 				<div class="row7">
-					<button class="36">0</button>
-					<button class="37">0</button>
-					<button class="38">0</button>
-					<button class="39">0</button>
-					<button class="40">0</button>
-					<button class="41">0</button>
-					<button class="42">0</button>
+					<button class="m29">0</button>
+					<button class="m30">0</button>
+					<button class="m31">0</button>
+					<button class="m32">0</button>
+					<button class="m33">0</button>
+					<button class="m34">0</button>
+					<button class="m35">0</button>
+				</div>
+				<div class="row8">
+					<button class="m36">0</button>
+					<button class="m37">0</button>
+					<button class="m38">0</button>
+					<button class="m39">0</button>
+					<button class="m40">0</button>
+					<button class="m41">0</button>
+					<button class="m42">0</button>
 				</div>
 			</div>
 		</div>
 	</div>
-	<script src="main.js" type="module"></script>
+	<script src="main.js"></script>
 </body>
 </html>
