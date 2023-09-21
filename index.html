@@ -70,7 +70,7 @@
 				<div class="notes">
 					<div class="note-header">
 						<p>daily notes</p>
-						<button>submit</button>
+						<button onclick="submit_note()">save</button>
 					</div>
 					<textarea name="note-input" id="note-input" cols="30" rows="10" class="note-input"></textarea>
 				</div>
@@ -78,17 +78,17 @@
 			<div class="calendar">
 				<div class="row1">
 					<button class="larrow" onclick="prev_month()"><</button>
-					<button class="month" style="background-color: blueviolet; color: white; font-size: 12px">september</button>
+					<button class="month" style="background-color: blueviolet; color: white; font-size: 12px; cursor: default">september</button>
 					<button class="rarrow" onclick="next_month()">></button>
 				</div>
-				<div class="row2" style="font-family: ;">
-					<button class="sunday">sun</button>
-					<button class="monday">mon</button>
-					<button class="tuesday">tue</button>
-					<button class="wednesday">wed</button>
-					<button class="thursday">thr</button>
-					<button class="friday">fri</button>
-					<button class="saturday">sat</button>
+				<div class="row2">
+					<div class="sunday">sun</div>
+					<div class="monday">mon</div>
+					<div class="tuesday">tue</div>
+					<div class="wednesday">wed</div>
+					<div class="thursday">thr</div>
+					<div class="friday">fri</div>
+					<div class="saturday">sat</div>
 				</div>
 				<div class="row3">
 					<button class="m1">0</button>

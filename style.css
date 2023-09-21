@@ -18,22 +18,25 @@
 .pause-resume-button {
     background-color: #cef4cd;
     color: #06be00;
+    cursor: pointer;
 }
 
 .pause-resume-button.timer-start {
     background-color: #cef4cd;
     color: #06be00;
+    cursor: pointer;
 }
 
 .pause-resume-button.timer-stop {
     background-color: #cef4cd;
     color: #06be00;
+    cursor: pointer;
 }
 
 .reset-button {
     background-color: #cde8f4;
     color: #0486bd;
-
+    cursor: pointer;
 }
 
 .time-display {
@@ -43,6 +46,7 @@
     border-radius: 1rem;
     background-color: #f4cdcd;
     color: #ae1616;
+    cursor: pointer;
 }
 
 .time-spent {
@@ -102,7 +106,32 @@
     border-radius: 5rem;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
+
+.calendar > div > button:active {
+    display: flex;
+    width: 100%;
+    font-family: 'Comfortaa', cursive;
+    background-color: #bea8f0;
+    color: #6231d5;
+    border: none;
+    border-radius: 5rem;
+    align-items: center;
+    justify-content: center;
+}
+.calendar > div > div {
+    display: flex;
+    width: 100%;
+    font-family: 'Comfortaa', cursive;
+    background-color: #bda8f000;
+    color: #6231d5;
+    border: none;
+    border-radius: 5rem;
+    align-items: center;
+    justify-content: center;
+}
+
 
 .month {
     max-height: fit-content;
@@ -207,6 +236,19 @@
     font-family: 'Comfortaa', cursive;
     color: #00b4b4;
 }
+.note-header button:active {
+    display: flex;
+    border-radius: 5rem;
+    border: 0.125rem;
+    border-style: solid;
+    border-color: #c3f5f0;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    align-items: center;
+    background-color: #00b4b4;
+    font-size: 12px;
+    font-family: 'Comfortaa', cursive;
+    color: #c3f5f0;
+}
 
 .note-header p {
     display: flex;
@@ -244,7 +286,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(10px);
 }
 
 .tutorial {
@@ -277,16 +319,16 @@
     left: 0;
     width: 100%;
     height: 100%;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(10px);
 }
 
 .note-display {
     display: flex;
     font-family: 'Comfortaa', cursive;
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     border-radius: 1rem;
     width: calc(80% - 2rem);
     height: calc(80% - 3.5rem);
@@ -294,12 +336,14 @@
 }
 
 .note-display-text {
+    white-space: pre-line;
     overflow-y: scroll;
 }
 
 .note-display-close {
     position: absolute;
     display: flex;
+    background-color: #ffffff;
     top: calc(10% + 0.5rem);
     right: calc(10% + 0.5rem);
     padding: 0;
