@@ -1,6 +1,4 @@
-@echo off
-title GIT PUSH
-cd %1
+echo off
 git init
 git add .
 git commit -m "update"
