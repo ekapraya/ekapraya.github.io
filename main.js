@@ -48,6 +48,7 @@ class Timer {
             this.el.minutes.textContent = "00";
             this.el.hours.textContent = "00";
             this.el.input.focus();
+            this.el.input.value = ""
         });
 
         this.el.input.addEventListener("input", () => {
@@ -58,6 +59,7 @@ class Timer {
             }
             var value = this.el.input.value.padStart(6,"0");
             this.el.input.value = value;
+            console.log(value)
             this.el.seconds.textContent = value.slice(4,6);
             this.el.minutes.textContent = value.slice(2, 4);
             this.el.hours.textContent = value.slice(0,2);
@@ -68,12 +70,24 @@ class Timer {
             this.el.control.style.display = "block";
             this.el.reset.style.display = "block";
             var value = this.el.input.value
+            console.log(value)
             this.remainingSeconds = Number(value.slice(0, 2) * 3600) + Number(value.slice(2, 4) * 60) + Number(value.slice(4,6));
             this.initialSeconds = this.remainingSeconds;
             this.updateInterfaceTime();
-            this.el.input.value = ""
             this.el.input.style.display = "none";
         });
+
+        this.el.input.addEventListener("blur", () => {
+            this.stop();
+            this.el.control.style.display = "block";
+            this.el.reset.style.display = "block";
+            var value = this.el.input.value
+            console.log(value)
+            this.remainingSeconds = Number(value.slice(0, 2) * 3600) + Number(value.slice(2, 4) * 60) + Number(value.slice(4,6));
+            this.initialSeconds = this.remainingSeconds;
+            this.updateInterfaceTime();
+            this.el.input.style.display = "none";
+        })
     }
 
     updateInterfaceTime() {
@@ -109,8 +123,8 @@ class Timer {
                 if (typeof(Storage) !== "undefined") {
                     var date_id = Number(currentYear + String(months[currentMonth][3] + currentDate))
                     if (localStorage.getItem("ld") - date_id < 0) {
-                        localStorage.setItem("s", localStorage.getItem("s") + 1)
-                    } else {
+                        localStorage.setItem("s", Number(localStorage.getItem("s")) + 1)
+                    } else if (localStorage.getItem("ld") - date_id > 0){
                         localStorage.setItem("s", 0)
                     }
                     localStorage.setItem("ld", date_id)
