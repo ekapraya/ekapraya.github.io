@@ -35,10 +35,10 @@ class Timer {
         });
 
         this.el.display.addEventListener("click", () => {
+            this.stop();
             if (this.el.display.style.animationName == "blinking"){
                 this.ringtone.pause();
                 this.el.display.style.animationName = "none";
-                this.stop();
                 return;
             }
             this.el.control.style.display = "none";
