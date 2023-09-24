@@ -19,6 +19,7 @@ class Timer {
         this.el.control.addEventListener("click", () => {
             this.ringtone.pause()
             this.el.display.style.animationName = "none";
+
             if (this.interval === null) {
                 this.start();
             } else {
@@ -41,14 +42,28 @@ class Timer {
                 this.el.display.style.animationName = "none";
                 return;
             }
-            this.el.control.style.display = "none";
-            this.el.reset.style.display = "none";
-            this.el.input.style.display = "block";
-            this.el.seconds.textContent = "00";
-            this.el.minutes.textContent = "00";
-            this.el.hours.textContent = "00";
-            this.el.input.focus();
-            this.el.input.value = ""
+            console.log(this.el.input.style.display)
+            if (this.el.input.style.display !== "none") {
+                this.stop();
+                this.el.control.style.display = "block";
+                this.el.reset.style.display = "block";
+                var value = this.el.input.value
+                remainingSeconds = Number(value.slice(0, 2) * 3600) + Number(value.slice(2, 4) * 60) + Number(value.slice(4,6));
+                this.initialSeconds = remainingSeconds;
+                this.updateInterfaceTime();
+                this.el.input.style.display = "none";
+                console.log("print")
+            }else{
+                this.el.control.style.display = "none";
+                this.el.reset.style.display = "none";
+                this.el.input.style.display = "block";
+                this.el.seconds.textContent = "00";
+                this.el.minutes.textContent = "00";
+                this.el.hours.textContent = "00";
+                this.el.input.focus();
+                this.el.input.value = ""
+                console.log("lo")
+            }
         });
 
         this.el.input.addEventListener("input", () => {
@@ -82,7 +97,6 @@ class Timer {
             this.el.control.style.display = "block";
             this.el.reset.style.display = "block";
             var value = this.el.input.value
-            console.log(value)
             remainingSeconds = Number(value.slice(0, 2) * 3600) + Number(value.slice(2, 4) * 60) + Number(value.slice(4,6));
             this.initialSeconds = remainingSeconds;
             this.updateInterfaceTime();
