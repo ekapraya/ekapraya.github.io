@@ -14,7 +14,7 @@ class Timer {
         this.ringtone = new Audio("./assets/alarm-clock.mp3")
         this.interval = null;
         this.initialSeconds = 0;
-        this.remainingSeconds = 0;
+        this.w = undefined;
 
         this.el.control.addEventListener("click", () => {
             this.ringtone.pause()
@@ -30,7 +30,7 @@ class Timer {
             this.ringtone.pause();
             this.el.display.style.animationName = "none";
             this.stop();
-            this.remainingSeconds = this.initialSeconds;
+            remainingSeconds = this.initialSeconds;
             this.updateInterfaceTime();
         });
 
@@ -71,8 +71,8 @@ class Timer {
             this.el.reset.style.display = "block";
             var value = this.el.input.value
             console.log(value)
-            this.remainingSeconds = Number(value.slice(0, 2) * 3600) + Number(value.slice(2, 4) * 60) + Number(value.slice(4,6));
-            this.initialSeconds = this.remainingSeconds;
+            remainingSeconds = Number(value.slice(0, 2) * 3600) + Number(value.slice(2, 4) * 60) + Number(value.slice(4,6));
+            this.initialSeconds = remainingSeconds;
             this.updateInterfaceTime();
             this.el.input.style.display = "none";
         });
@@ -83,17 +83,17 @@ class Timer {
             this.el.reset.style.display = "block";
             var value = this.el.input.value
             console.log(value)
-            this.remainingSeconds = Number(value.slice(0, 2) * 3600) + Number(value.slice(2, 4) * 60) + Number(value.slice(4,6));
-            this.initialSeconds = this.remainingSeconds;
+            remainingSeconds = Number(value.slice(0, 2) * 3600) + Number(value.slice(2, 4) * 60) + Number(value.slice(4,6));
+            this.initialSeconds = remainingSeconds;
             this.updateInterfaceTime();
             this.el.input.style.display = "none";
         })
     }
 
     updateInterfaceTime() {
-        const hours = Math.floor(this.remainingSeconds / 3600);
-        const minutes = Math.floor((this.remainingSeconds - hours * 3600)/ 60);
-        const seconds = this.remainingSeconds % 60;
+        const hours = Math.floor(remainingSeconds / 3600);
+        const minutes = Math.floor((remainingSeconds - hours * 3600)/ 60);
+        const seconds = remainingSeconds % 60;
     
         this.el.hours.textContent = hours.toString().padStart(2, "0");
         this.el.minutes.textContent = minutes.toString().padStart(2, "0");
@@ -113,13 +113,23 @@ class Timer {
     }
 
     start() {
-        if (this.remainingSeconds === 0) return;
+        if (remainingSeconds === 0) return;
+        if (typeof(Worker) !== "undefined") {
+            if (typeof(this.w) == "undefined") {
+                this.w = new Worker("bg_timer.js");
+            }
+            this.w.onmessage = function(event) {
+                console.log("kiw kiw")
+                remainingSeconds--
+            };
+        } else {
+            document.getElementById("result").innerHTML = "Sorry! No Web Worker support.";
+        }
     
         this.interval = setInterval(() => {
-            this.remainingSeconds--;
             this.updateInterfaceTime();
     
-            if (this.remainingSeconds === 0) {
+            if (remainingSeconds === 0) {
                 if (typeof(Storage) !== "undefined") {
                     var date_id = Number(currentYear + String(months[currentMonth][3] + currentDate))
                     if (localStorage.getItem("ld") - date_id < 0) {
@@ -147,7 +157,12 @@ class Timer {
     
     stop() {
         clearInterval(this.interval);
-    
+
+        if (typeof(this.w) != "undefined") { 
+            this.w.terminate();
+            this.w = undefined;
+        }
+        
         this.interval = null;
     
         this.updateInterfaceControls();
@@ -193,6 +208,7 @@ const currentDate = d.getDate()
 const currentMonth = d.getMonth();
 const currentYear = d.getFullYear();
 
+var remainingSeconds = 0;
 var displayed_month = currentMonth;
 
 function calendar_update(m) {
