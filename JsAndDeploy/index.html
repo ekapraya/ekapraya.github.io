@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trial iwdc</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/8ddf65ad9f.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li>logo</li>
+        </ul>
+        <ul class="nav-right" id="myNav-right">
+            <a href="javascript:void(0)" onclick="myFunction()" class="icon">
+                <i class="fa-solid fa-bars"></i>
+            </a>
+            <li>home</li>
+            <li>about</li>
+            <li>tech</li>
+            <li>projects</li>
+        </ul>
+    </nav>
+
+    <section id="hero-container">
+        <div class="about-me">
+            <h2>about me</h2>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Id recusandae exercitationem deserunt
+                consectetur deleniti impedit ipsum dolor optio possimus quisquam. Eligendi, ipsa laudantium quaerat eos
+                odit adipisci non neque unde.
+            </p>
+        </div>
+        <div class="profile-img">
+            <img src="assets/Vector.svg" alt="my-pic">
+            <h2>Nibras Ramzy</h2>
+        </div>
+        <div class="right-side">
+            <div class="projects-container">
+                <h2>projects</h2>
+                <p>4+</p>
+            </div>
+            <div class="language-container">
+                <h2>language</h2>
+                <div>
+                    <img src="assets/c 1.svg" alt="">
+                    <img src="assets/cpp 1.svg" alt="">
+                    <img src="assets/css.svg" alt="">
+                    <img src="assets/html.svg" alt="">
+                    <img src="assets/python.svg" alt="">
+                    <img src="assets/javascript.svg" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="card-wrapper">
+        <h2>LATEST PROJECTS</h2>
+        <div class="card-container">
+            <div class="card">
+                <img src="assets/card1.png" alt="">
+                <p>Lorem Ipsum (2022)</p>
+            </div>
+            <div class="card">
+                <img src="assets/card2.png" alt="">
+                <p>Dolor sit amet (2022)</p>
+            </div>
+            <div class="card">
+                <img src="assets/card3.png" alt="">
+                <p>ini card 3 (2023)</p>
+            </div>
+            <div class="card">
+                <img src="assets/card4.png" alt="">
+                <p>ini card 4 (2023)</p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-left">
+            <h3>Made with HTML CSS</h3>
+        </div>
+        <div class="footer-mid">
+            <h1>IWDC</h1>
+        </div>
+        <div class="footer-right">
+            <h3>Contact me : </h3>
+            <img src="assets/github.png" alt="">
+            <img src="assets/gmail.png" alt="">
+            <img src="assets/discord.png" alt="">
+        </div>
+    </footer>
+</body>
+
+<script>
+    function myFunction() {
+        var x = document.getElementById("myNav-right")
+        if (x.className === "nav-right"){
+            x.className += " tambahan"
+        } else {
+            x.className = "nav-right"
+        }
+    }
+</script>
+
+</html>

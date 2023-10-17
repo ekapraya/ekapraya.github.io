@@ -4,7 +4,6 @@
     min-height: 52px;
     gap: 0.5rem;
     justify-content: center;
-    
 }
 
 .timer button {
@@ -37,6 +36,16 @@
     background-color: #cde8f4;
     color: #0486bd;
     cursor: pointer;
+}
+
+.rate-button {
+    background-color: #f1f1a5;
+    color: #f8965a;
+    cursor: pointer;
+    padding: 0.75rem 1rem 0.75rem 1rem;
+    border: 0rem;
+    border-radius: 1rem;
+    font-size: 12px;
 }
 
 .time-display {
@@ -300,8 +309,17 @@
 }
 
 .tutorial-text {
+    display: flex;
+    flex-direction: column;
     white-space: pre-line;
     overflow-y: scroll;
+    align-items: center;
+}
+
+.tutorial-text img {
+    width: 33%;
+    border-radius: 1rem;
+    justify-self: center;
 }
 
 .tutorial-close {
@@ -398,6 +416,11 @@ body {
     }
     .notes {
         height: 50%;
+    }
+    .tutorial-text img {
+        width: 80%;
+        border-radius: 1rem;
+        justify-self: center;
     }
 }
 

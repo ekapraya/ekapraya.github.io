@@ -193,7 +193,8 @@ class Timer {
 			<span class="seconds">00</span>
 		</button>
 		<button class="pause-resume-button"><span class="material-symbols-rounded">pause</span></button>
-		<button class="reset-button"><span class="material-symbols-rounded">timer</span></button>`;
+		<button class="reset-button"><span class="material-symbols-rounded">timer</span></button>
+        <a href="https://forms.gle/jkbQP2xWpCWDQADy5" target="_blank"><button class="rate-button"><span class="material-symbols-rounded">star</span></button></a>`;
     
     }
 }
